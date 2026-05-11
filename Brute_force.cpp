@@ -5,7 +5,7 @@ using namespace std;
 class Graph
 {
 public:
-    int n; //number of coders
+    int n; // number of coders
     int m; // number of conflicts
     vector<long long> skill_ratings;
     vector<vector<int>> adj_list;
@@ -31,7 +31,7 @@ public:
         // case 1 : not take
         find_best_squad(current_coder + 1, current_sum, current_squad, is_selected);
 
-        // case 2 : take 
+        // case 2 : take
         bool can_include = true;
         for (int rival : adj_list[current_coder])
         {
@@ -61,7 +61,7 @@ public:
     {
         n = node;
         m = edge;
-        // using the 1-based indexing 
+        // using the 1-based indexing
         skill_ratings.resize(n + 1, 0);
         adj_list.resize(n + 1);
         max_skill_sum = -1;
@@ -109,15 +109,11 @@ int main()
     cin.tie(NULL);
 
     int n, m;
-    if (cin >> n >> m)
-    {
-        Graph g(n, m);
-        g.input();
-        g.solve();
-        g.print_result();
-    }
+    cin >> n >> m;
+    Graph g(n, m);
+    g.input();
+    g.solve();
+    g.print_result();
 
     return 0;
 }
-
-
