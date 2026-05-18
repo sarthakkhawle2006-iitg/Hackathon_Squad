@@ -1,36 +1,3 @@
-/* =====================================================================
- * HIGH-LEVEL EXECUTION FLOW (How the code runs from start to finish)
- * =====================================================================
- * 1. Start at main():
- * - The program reads N (coders) and M (conflicts), and builds the adjacency list.
- * - It creates P=4 independent "Solution" objects (teams).
- * * 2. Initialization:
- * - For each of the 4 teams, it calls greedy_init().
- * - greedy_init() shuffles the coders and blindly adds them to the team
- * as long as they don't conflict with anyone already added.
- * * 3. The Main Time Loop:
- * - The program enters a while loop that runs until the 5-minute timer is up.
- * * --- PHASE A: Full Graph Search ---
- * - It calls baseline_local_search() on all 4 teams using the entire graph.
- * Inside baseline_local_search():
- * a) It calls perturb() to violently shake up the team and escape local traps.
- * b) It calls neighborhood_swap() repeatedly to instantly swap out bad coders
- * for better ones using O(1) math.
- * c) It checks the new score. If the shake-up ruined the team, it backtracks.
- * * --- PHASE B: Extract the D-Core ---
- * - The program compares the 4 teams. It ignores the coders that all 4 teams
- * agree on (or all reject). It isolates the coders they *disagree* on into
- * a list called the "d_core".
- * * --- PHASE C: D-Core Targeted Search ---
- * - It calls baseline_local_search() AGAIN, but this time it only passes the
- * d_core list. The algorithm is restricted to only swapping those highly
- * contested coders, saving massive amounts of CPU time.
- * * 4. End of Program:
- * - The timer hits 4m 50s. The while loop breaks.
- * - It grabs the absolute best team out of the 4, formats the 1-based indices,
- * and prints the final score and roster.
- * ===================================================================== */
-
 #pragma GCC optimize("O3,unroll-loops")
 #pragma GCC target("avx2,bmi,bmi2,lzcnt,popcnt")
 
