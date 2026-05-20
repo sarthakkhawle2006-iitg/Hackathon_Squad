@@ -10,14 +10,6 @@
 
 using namespace std;
 
-// Fast I/O to handle massive input files (200,000 vertices) instantly
-static auto _ = []()
-{
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    return 0;
-}();
-
 // Time management variables
 const int TIME_LIMIT_MS = 290000; // 4 minutes 50 seconds
 auto start_time = chrono::steady_clock::now();
@@ -208,6 +200,10 @@ void baseline_local_search(Solution &sol, int iterations, const vector<int> &act
 
 int main()
 {
+    // fast Input-Output 
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    
     // 1. Read input
     cin >> N >> M;
 
