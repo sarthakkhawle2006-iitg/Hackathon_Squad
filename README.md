@@ -2,7 +2,7 @@
 
 Given N coders each with a skill rating and M conflict pairs between them, assemble the highest-scoring squad where no two members conflict with each other.
 
-This is the **Maximum Weight Independent Set (MWIS)** problem on a general graph — NP-Hard on general graphs, meaning no known polynomial-time exact algorithm exists. This repo contains two approaches: a recursive brute-force for small inputs and a high-performance metaheuristic solver (CHILS) built to handle up to 200,000 nodes within a 5-minute time limit.
+This is the **Maximum Weight Independent Set (MWIS)** problem on a general graph NP-Hard on general graphs, meaning no known polynomial-time exact algorithm exists. This repo contains two approaches: a recursive brute-force for small inputs and a high-performance metaheuristic solver (CHILS) built to handle up to 200,000 nodes within a 5-minute time limit.
 
 ---
 
@@ -194,4 +194,4 @@ g++ -O3 -march=native -o chils CHILS2_0.cpp
 
 ## Why not an exact solver for large inputs?
 
-MWIS is NP-Hard on general graphs. For large N, exact branch-and-bound or ILP solvers become intractable. CHILS sidesteps this by using the time budget as the resource — the longer it runs, the better the solution gets, trading provable optimality for practical performance within the contest's time limit.
+MWIS is NP-Hard on general graphs. For large N, exact branch and bound or ILP solvers become intractable. CHILS sidesteps this by using the time budget as the resource. The longer it runs, the better the solution gets, trading provable optimality for practical performance within the contest's time limit.
